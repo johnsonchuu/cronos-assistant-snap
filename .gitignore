@@ -77,3 +77,5 @@ node_modules/
 .pnp.*
 
 .zip
+.idea
+
