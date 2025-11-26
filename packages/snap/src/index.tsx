@@ -72,24 +72,7 @@ export const onTransaction: OnTransactionHandler = async ({ transaction, chainId
 	try {
 		const chainNumber = chainId.split(':')[1];
 		if (chainNumber == '25' || chainNumber == '338') {
-			const [
-				[domainSecurityContent, domainRiskScore],
-				[transactionInsightContent, insightRiskScore],
-			] = await Promise.all([
-				callDomainSecurity(transactionOrigin),
-				callTransactionInsight(),
-			]);
-
 			const [severity, title, description] = riskLevelToBannerValues(0);
-			// Create array of content with their risk scores for sorting
-			const contentWithScores = [
-				{ content: domainSecurityContent, score: domainRiskScore },
-				{ content: transactionInsightContent, score: insightRiskScore },
-			].filter((item) => item.content !== null); // Filter out null content
-
-			// Sort by risk score in descending order
-			// Transaction Simulation Content will always be the last content
-			// The other content will be sorted by risk score in descending order
 			return {
 				content: (
 					<Box>
@@ -99,7 +82,6 @@ export const onTransaction: OnTransactionHandler = async ({ transaction, chainId
 					</Box>
 				),
 			};
-
 		} else {
 			return {
 				content: (
