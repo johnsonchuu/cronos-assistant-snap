@@ -7,11 +7,11 @@
     "url": "https://github.com/hashdit/metamask-snap.git"
   },
   "source": {
-    "shasum": "6e+fde2f/xWGmmdxgDLX34uVxQG1d2bp56D5fG4bfAw=",
+    "shasum": "J56lJeCWXpbQmLthTgra5v0/fcUIkOx/+vHKEBmEnuM=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
-        "iconPath": "images/hashdit.svg",
+        "iconPath": "images/cronos.svg",
         "packageName": "hashdit-snap-security",
         "registry": "https://registry.npmjs.org/"
       }

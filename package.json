@@ -3,13 +3,6 @@
   "version": "0.1.0",
   "description": "The Cronos Assistant Snap that screens user's transactions for malicious activity before approving any transaction.",
   "homepage": "https://github.com/MetaMask/template-snap-monorepo#readme",
-  "bugs": {
-    "url": "https://github.com/Matrix-Devs/HashDit-Snaps-Audit/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Matrix-Devs/HashDit-Snap-Audit.git"
-  },
   "license": "(MIT-0 OR Apache-2.0)",
   "author": "Cronos-labs",
   "workspaces": [

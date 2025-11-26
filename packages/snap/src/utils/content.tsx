@@ -40,17 +40,17 @@ export const onHomePageContent = (
 			<Heading>🔗 Links</Heading>
 			<Text>
 				Installation Guide:{' '}
-				<Link href="https://hashdit.gitbook.io/hashdit-snap/usage/installing-hashdit-snap">
+				<Link href="https://www.cronoslabs.org">
 					Installation
 				</Link>
 			</Text>
 			<Text>
 				Documentation:{' '}
-				<Link href="https://hashdit.gitbook.io/hashdit-snap">Docs</Link>
+				<Link href="https://www.cronoslabs.org">Docs</Link>
 			</Text>
 			<Text>
 				FAQ/Knowledge Base:{' '}
-				<Link href="https://hashdit.gitbook.io/hashdit-snap/information/faq-and-knowledge-base">
+				<Link href="https://www.cronoslabs.org">
 					FAQ
 				</Link>
 			</Text>
@@ -81,23 +81,23 @@ export const onInstallContent = (
 			<Heading>🔗 Links</Heading>
 			<Text>
 				Installation Guide:{' '}
-				<Link href="https://hashdit.gitbook.io/hashdit-snap/usage/installing-hashdit-snap">
+				<Link href="https://www.cronoslabs.org">
 					Installation
 				</Link>
 			</Text>
 			<Text>
 				Documentation:{' '}
-				<Link href="https://hashdit.gitbook.io/hashdit-snap">Docs</Link>
+				<Link href="https://www.cronoslabs.org">Docs</Link>
 			</Text>
 			<Text>
 				FAQ/Knowledge Base:{' '}
-				<Link href="https://hashdit.gitbook.io/hashdit-snap/information/faq-and-knowledge-base">
+				<Link href="https://www.cronoslabs.org">
 					FAQ
 				</Link>
 			</Text>
 			<Text>
 				MetaMask Store Page:{' '}
-				<Link href="https://snaps.metamask.io/snap/npm/hashdit-snap-security/">
+				<Link href="https://www.cronoslabs.org">
 					Snap Store
 				</Link>
 			</Text>
