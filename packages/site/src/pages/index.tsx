@@ -5,7 +5,7 @@ import FunctionParamScreenDark from '../assets/FunctionParamDark.png';
 import FunctionParamScreenLight from '../assets/FunctionParamLight.png';
 import UrlScreenDark from '../assets/URLDark.png';
 import UrlScreenLight from '../assets/URLLight.png';
-import BscLogo from '../assets/BscLogoAlt.svg';
+import CronosLogo from '../assets/cronos-cro-logo.svg';
 import EthLogo from '../assets/EthLogo.svg';
 import HashDitBanner from '../assets/banner.png';
 import WarningIcon from '../assets/warning.svg';
@@ -276,7 +276,7 @@ const Feature2LeftDiv  = styled.div`
   font-size:28px;
 `
 
-const BscLogoImg = styled.img<ImageProps>`
+const CronosLogoImg = styled.img<ImageProps>`
   width: 100%;
   //padding-right:10%;
   @media (max-width: 1000px) {
@@ -462,7 +462,7 @@ const Index = () => {
             </Heading>
             Full security screening support for BSC Mainnet and ETH Mainnet.
           </Feature2LeftDiv>
-          <BscLogoImg src={BscLogo} alt="Description of Image"/>
+          <CronosLogoImg src={CronosLogo} alt="Description of Image"/>
           <EthLogoImg src={EthLogo} alt="Description of Image"/>
 
         </Feature2Grid>
