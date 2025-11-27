@@ -132,3 +132,11 @@ export const notSupportedChainContent = (
 		</Section>
 	</Box>
 );
+
+export const noContent = (
+	<Box>
+		<Heading>Cronos Assistant</Heading>
+		<Section>
+		</Section>
+	</Box>
+);
