@@ -1,9 +1,9 @@
 /* eslint-disable */
 import type { OnTransactionHandler, OnInstallHandler, OnHomePageHandler, OnSignatureHandler } from '@metamask/snaps-sdk';
 
-import { onHomePageContent, errorContent, notSupportedChainContent } from './utils/content';
+import { onHomePageContent, errorContent, notSupportedChainContent, noContent } from './utils/content';
 import { Box, Text, Banner} from '@metamask/snaps-sdk/jsx';
-import { riskLevelToBannerValues } from './utils/utilFunctions';
+import { findScenarios, scenariosLevelToBannerValues } from './utils/utilFunctions';
 
 // Called during after installation. Show install instructions and links
 export const onInstall: OnInstallHandler = async () => {
@@ -13,13 +13,18 @@ export const onInstall: OnInstallHandler = async () => {
 // Called during a signature request transaction. Show insights
 export const onSignature: OnSignatureHandler = async ({ signature, signatureOrigin }) => {
 	try {
-		const [severity, title, description] = riskLevelToBannerValues(0);
+		const [severity, title, description] = scenariosLevelToBannerValues([0]);
 		return {
 			content: (
 				<Box>
-					<Banner title={title} severity={severity}>
-						<Text>{description}</Text>
-					</Banner>
+					{banners.map((banner, index) => (
+						<Banner// better to use a unique id if available
+							title={banner[1]}
+							severity={banner[0]}
+						>
+							<Text>{banner[2]}</Text>
+						</Banner>
+					))}
 				</Box>
 			),
 		};
@@ -34,13 +39,21 @@ export const onTransaction: OnTransactionHandler = async ({ transaction, chainId
 	try {
 		const chainNumber = chainId.split(':')[1];
 		if (chainNumber == '25' || chainNumber == '338') {
-			const [severity, title, description] = riskLevelToBannerValues(0);
+			let scenarios = [0];
+			scenarios = findScenarios(transaction, chainId, transactionOrigin);
+			const banners = scenariosLevelToBannerValues(scenarios);
+
 			return {
 				content: (
 					<Box>
-						<Banner title={title} severity={severity}>
-							<Text>{description}</Text>
-						</Banner>
+						{banners.map((banner, index) => (
+							<Banner// better to use a unique id if available
+								title={banner[1]}
+								severity={banner[0]}
+							>
+								<Text>{banner[2]}</Text>
+							</Banner>
+						))}
 					</Box>
 				),
 			};
