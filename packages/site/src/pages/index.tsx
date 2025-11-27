@@ -7,7 +7,7 @@ import UrlScreenDark from '../assets/URLDark.png';
 import UrlScreenLight from '../assets/URLLight.png';
 import CronosLogo from '../assets/cronos-cro-logo.svg';
 import EthLogo from '../assets/EthLogo.svg';
-import HashDitBanner from '../assets/banner.png';
+import Banner from '../assets/secure-crypto-wallet.png';
 import WarningIcon from '../assets/warning.svg';
 
 
@@ -393,7 +393,7 @@ const Index = () => {
               <HeaderButtons state={state} onConnectClick={handleConnectClick}/>
             </HeroLeftButton>
           </HeroLeft>
-          <BannerImg src={HashDitBanner} alt="Description of Image"/>
+          <BannerImg src={Banner} alt="Description of Image"/>
         </HeroGrid>
       </Hero>
 
