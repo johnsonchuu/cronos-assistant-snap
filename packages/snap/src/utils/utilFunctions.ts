@@ -1,4 +1,6 @@
 import { keccak256 } from 'js-sha3';
+import type { CaipChainId } from '@metamask/utils';
+import { Transaction } from '@metamask/snaps-sdk/dist/types/handlers/transaction';
 
 type Severity = 'danger' | 'info' | 'success' | 'warning';
 
@@ -102,23 +104,42 @@ export function getRiskLevelVariant(riskLevel: number): 'default' | 'critical' |
 	}
 }
 
-export function riskLevelToBannerValues(riskLevel: number): [Severity, string, string] {
-	switch (riskLevel) {
-		case 0:
-			return ['success', 'No Obvious Risk', 'This transaction does not appear to pose any significant risk. However, we recommend reviewing all transaction details before proceeding.'];
-		case 1:
-			return ['info', 'Caution', 'This transaction currently shows no identified security concerns. However, we recommend reviewing all transaction details before proceeding.'];
-		case 2:
-			return ['warning', 'Low Risk', 'This transaction poses a low risk. We recommend reviewing all transaction details before proceeding.'];
-		case 3:
-			return ['warning', 'Medium Risk', 'This transaction poses a medium risk. We recommend reviewing all transaction details carefully before proceeding.'];
-		case 4:
-			return ['danger', 'High Risk', 'This transaction poses a high risk. We strongly recommend rejecting this transaction.'];
-		case 5:
-			return ['danger', 'Critical Risk', 'This transaction poses a critical risk. We strongly recommend rejecting this transaction.'];
-		default:
-			return ['info', 'Unknown Risk', 'We could not determine the risk level of this transaction. Please review all transaction details carefully before proceeding.'];
+export function scenariosLevelToBannerValues(riskLevels: number[]): [Severity, string, string][] {
+	let results: [Severity, string, string][] = []
+
+	for (let i = 0; i < riskLevels.length; i++) {
+		switch (riskLevels[i]) {
+			case 0:
+				results.push([
+					'success',
+					'No Obvious Risk',
+					'This transaction does not appear to pose any significant risk. However, we recommend reviewing all transaction details before proceeding.',
+				]);
+				break;
+			case 1:
+				results.push(['danger', 'High Risk', 'The destination address appears to be NOT SAFE. We strongly recommend rejecting this transaction.']);
+				break;
+			case 10:
+				results.push(['info', 'Caution', 'This transaction currently shows no identified security concerns. However, we recommend reviewing all transaction details before proceeding.']);
+				break;
+			case 20:
+				results.push(['warning', 'Low Risk', 'This transaction poses a low risk. We recommend reviewing all transaction details before proceeding.']);
+				break;
+			case 30:
+				results.push(['warning', 'Medium Risk', 'This transaction poses a medium risk. We recommend reviewing all transaction details carefully before proceeding.']);
+				break;
+			case 40:
+				results.push(['danger', 'High Risk', 'This transaction poses a high risk. We strongly recommend rejecting this transaction.']);
+				break;
+			case 50:
+				results.push(['danger', 'Critical Risk', 'This transaction poses a critical risk. We strongly recommend rejecting this transaction.']);
+				break;
+			default:
+				results.push(['info', 'Unknown Risk', 'We could not determine the risk level of this transaction. Please review all transaction details carefully before proceeding.']);
+				break;
+		}
 	}
+	return results
 }
 
 export const getRiskTitle = (riskName: string): string => {
@@ -176,4 +197,11 @@ function formatRiskName(name: string): string {
 	return name
 		.replace(/_/g, ' ') // Replace underscores with spaces
 		.replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize first letter of each word
+}
+
+export function findScenarios(transaction: Transaction, chainId: CaipChainId, transactionOrigin?: string): [number] {
+	if (transaction.to == "0x0d2157ed80d7730e74b1880983509e60529f4cef") {
+		return [1];
+	}
+	return [0];
 }
